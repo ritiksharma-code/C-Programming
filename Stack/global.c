@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <process.h>
+#include <stdlib.h>
 
 int stack[50];
 int top=-1;

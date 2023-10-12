@@ -28,7 +28,7 @@ int main()
             case 4:
                 exit(0);
             default:
-                printf("Invalid choice!");
+                printf("\nInvalid choice!\n");
                 break;
         }
     }

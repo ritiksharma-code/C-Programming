@@ -55,7 +55,6 @@ void enqueue()
         printf("\n");
         scanf("%d", &queue[rear]);
     }
-    
 }
 
 void dequeue()
@@ -82,13 +81,13 @@ void display()
     {
         printf("\nUNDERFLOW!\n");
     }
-    else{
+    else
+    {
         printf("\n");
         for(int i=front;i<=rear;i++)
         {
             printf("%d ", queue[i]);
         }
         printf("\n");
-    }
-    
+    }  
 }

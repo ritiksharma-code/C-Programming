@@ -1,3 +1,5 @@
+// If front==rear, then it means there is only a single element stored in the queue.
+
 #include <stdio.h>
 #include <stdlib.h>
 

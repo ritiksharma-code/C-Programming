@@ -53,8 +53,38 @@ void insertLast()
 
 void insertMid()
 {
-    create_node();
-
+    int pos;
+    printf("Enter the node position: ");
+    scanf("%d", &pos);
+    if(pos>0&&pos<(count+1))
+    {
+        if(pos==1)
+        {
+            insertFirst();
+        }
+        else if(pos==(count+1))
+        {
+            insertLast();
+        }
+        else
+        {
+            node *p;
+            create_node();
+            count++;
+            p=start;
+            for(int i=1;i<(pos-1);i++)
+            {
+                p=p->next;
+                temp->next=p->next;
+                p->next=temp;
+            }
+        }
+    }
+    else
+    {
+        printf("\nInvalid Position!\n");
+        exit(0);
+    }
 }
 
 void display()
@@ -94,7 +124,8 @@ int main()
                 insertMid();
                 break;
             case 4:
-                display(0);
+                display();
+                break;
             case 5:
                 exit(0);
             default:

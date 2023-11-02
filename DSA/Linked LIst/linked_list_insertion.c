@@ -87,6 +87,90 @@ void insertMid()
     }
 }
 
+void deleteFirst()
+{
+    if(start==NULL)
+    {
+        printf("\nUNDERFLOW!");
+    }
+    else
+    {
+        count--;
+        if(start==rear)
+        {
+            free(start);
+            start=NULL;
+            rear=NULL;
+        }
+        else
+        {
+            temp=start;
+            start=start->next;
+            free(temp);
+        }
+    }
+}
+
+void deleteLast()
+{
+    if(start==NULL)
+    {
+        printf("\nUNDERFLOW!");
+    }
+    else
+    {
+        count--;
+        if(start==rear)
+        {
+            free(start);
+            start=NULL;
+            rear=NULL;
+        }
+        else
+        {
+            temp=start;
+            while(temp->next!=rear)
+            {
+                temp=temp->next;
+            }
+            free(rear);
+            rear=temp;
+            rear->next=NULL;
+        }
+    }
+}
+
+void deleteMid()
+{
+    int pos;
+    printf("Enter the position: ");
+    scanf("%d", &pos);
+    if(start==NULL)
+    {
+        printf("\nUNDERFLOW!");
+    }
+    else if(pos==1)
+    {
+        insertFirst();
+    }
+    else if(pos==count)
+    {
+        insertLast();
+    }
+    else
+    {
+        node *p, *q;
+        p=start;
+        for(int i=1;i<(pos-1);i++)
+        {
+            p=p->next;
+        }
+        q=p->next;
+        p->next=q->next;
+        free(q);
+    }
+}
+
 void display()
 {
     if(start==NULL)
@@ -110,7 +194,7 @@ int main()
     int ch;
     while(1)
     {
-        printf("\n1: Insert at first location\n2: Insert at last location\n3: Insert at mid location\n4: Display\n5: Exit\nEnter your choice: ");
+        printf("\n1: Insert at first location\n2: Insert at last location\n3: Insert at mid location\n4: Display\n5: Delete at first location\n6: Delete at last location\n7: Delete at Mid location\n8: Exit\nEnter your choice: ");
         scanf("%d", &ch);
         switch(ch)
         {
@@ -127,6 +211,15 @@ int main()
                 display();
                 break;
             case 5:
+                deleteFirst();
+                break;
+            case 6:
+                deleteLast();
+                break;
+            case 7:
+                deleteMid();
+                break;
+            case 8:
                 exit(0);
             default:
                 printf("\nInvalid choice!\n");

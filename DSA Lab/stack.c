@@ -1,39 +1,43 @@
 #include <stdio.h>
+#include <process.h>
 #include <stdlib.h>
 
-int push(int[], int); // Return with argument
-int pop(int[], int);  // Return with argument
-void peek(int[], int);// No Return with argument
-void display(int[], int); // No Return with argument
+#define MAX 50
+
+int stack[MAX];
+int top=-1;
+void push();
+void pop();
+void peek();
+void display();
 
 int main()
 {
-    int stack[50], top=-1;
-    int ch,ele;
+    int ch;
     while(1)
     {
-        printf("\n1: PUSH\n2: POP\n3: PEEK\n4: DISPLAY\n5: EXIT\n");
+        printf("\n1: PUSH\n2: POP\n3: PEEK\n4: DISPLAY\n5: EXIT\nEnter your choice: ");
         scanf("%d", &ch);
         switch(ch)
         {
             case 1:
             {
-                top=push(stack, top);
+                push();
                 break;
             }    
             case 2:
             {
-                top=pop(stack, top);
+                pop();
                 break;  
             }
             case 3:
             {
-                peek(stack, top);
+                peek();
                 break;
             }
             case 4:
             {
-                display(stack, top);
+                display();
                 break;
             }
             case 5:
@@ -49,22 +53,21 @@ int main()
     }
 }
 
-int push(int stack[], int top)
+void push()
 {
-    if(top==49)
+    if(top==(MAX-1))
     {
-        printf("\nOVERFLOW\n");
+        printf("\nOVERFLOW!\n");
     }
     else
     {
         top++;
-        printf("Enter the element: ");
+        printf("Enter new element: ");
         scanf("%d", &stack[top]);
     }
-    return top;
 }
 
-int pop(int stack[], int top)
+void pop()
 {
     if(top==-1)
     {
@@ -72,13 +75,12 @@ int pop(int stack[], int top)
     }
     else
     {
-        printf("%d", stack[top]);
+        printf("%d is deleted!\n", stack[top]);
         top--;
     }
-    return top;
 }
 
-void peek(int stack[], int top)
+void peek()
 {
     if(top==-1)
     {
@@ -86,16 +88,16 @@ void peek(int stack[], int top)
     }
     else
     {
-        printf("%d is at top of the stack.", stack[top]);
+        printf("%d is on the top of stack\n", stack[top]);
     }
 }
 
-void display(int stack[], int top)
+void display()
 {
     int i;
     if(top==-1)
     {
-        printf("\nUNDERFLOW\n");
+        printf("\nUNDERFLOW!\n");
     }
     else
     {

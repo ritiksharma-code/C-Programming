@@ -27,7 +27,7 @@ int main()
         }
         else if(arr[mid]==ele)
         {
-            printf("Element %d found at %d", ele, arr[mid]);
+            printf("Element %d found at %d", ele, mid);
             break;
         }
         else

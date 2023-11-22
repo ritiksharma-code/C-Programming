@@ -1,41 +1,38 @@
 #include <stdio.h>
 
-void swap(int *a, int *b)
-{
-    int temp;
-    temp = *a;
-    *a=*b;
-    *b=temp;
-}
-
 int main()
 {
-    int arr[50], n, indexMin, flag=0;
+    int n, arr[50], flag = 0;
     printf("Enter the size of array: ");
     scanf("%d", &n);
     printf("Enter %d elements: \n", n);
-    for(int i=0; i<n; i++)
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
     }
-    for(int i=0; i<n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }
     for(int i=0; i<n-1; i++)
     {
-        indexMin=i;
-        for(int j=i+1; j<n; j++)
+        for(int j=0; j<n; j++)
         {
-            if(arr[j]<arr[indexMin])
+            if(arr[j]>arr[j+1])
             {
-                indexMin=j;
+                int temp;
+                temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+            else
+            {
+                continue;
             }
         }
-        swap(&arr[i], &arr[indexMin]);
     }
     printf("\n");
-    for(int i=0; i<n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", arr[i]);
     }

@@ -1,44 +1,60 @@
 #include <stdio.h>
-int main()
-{
-    int arr[50], n, low=0, mid, high, i, ele;
-    printf("Enter the size of array: ");
-    scanf("%d", &n);
-    for(i=0;i<n;i++)
-    {
-        scanf("%d", &arr[i]);
-    }
-    for(i=0;i<n;i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\nEnter the element to search: ");
-    scanf("%d", &ele);
-    low=0;
-    high=n-1;
-    mid=(low+high)/2;
 
-    while(low<=high)
-    {
-        if(arr[mid]<ele)
-        {
-            low=mid+1;
-            mid = (low + high)/2;
-        }
-        else if(arr[mid]==ele)
-        {
-            printf("Element %d found at %d", ele, mid);
-            break;
-        }
-        else
-        {
-            high=mid-1;
-            mid=(low+high)/2;
-        }
-    }
-    if(low>high)
-    {
-        printf("Element %d not found!", ele);
-    }
-    return 0;
+int main(void) {
+	// your code goes here
+	int t;
+    scanf("%d", &t);
+	while(t--)
+	{
+	    int i, j;
+	    int type[50], nutrition[50], ans=0, n;
+	    scanf("%d", &n);
+	    for(i=0; i<n; i++)
+	    {
+	        scanf("%d", &type[i]);
+	    }
+	    for(i=0; i<n; i++)
+	    {
+	        scanf("%d", &nutrition[i]);
+	    }
+	    
+	    for(i=0; i<n; i++)
+	    {
+            if(nutrition[i]<0)
+            {
+                continue;
+            }
+            for(j=0; j<n; j++)
+            {
+                if(i==j)
+                {
+                    
+                    continue;
+                }
+            }
+            else
+            {
+                if(type[i]==type[i+1])
+                {
+                    if(nutrition[i]>=nutrition[i+1])
+                    {
+                        ans=ans+nutrition[i];
+                        continue;
+                    }
+                    else if(nutrition[i+1]>nutrition[i])
+                    {
+                        ans=ans+nutrition[i+1];
+                        continue;
+                    }
+                }
+                else
+                {
+                    ans=ans+nutrition[i];
+                }
+            }  
+	    }
+	    printf("%d\n", ans);
+	}
+	return 0;
 }
+
